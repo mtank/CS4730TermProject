@@ -9,7 +9,7 @@ public class FloorBlock {
     private int fid;
     private int x;
     private int y;
-    private Block block;
+    private int bid;
     
     /**
      * No argument FloorBlock constructor
@@ -18,7 +18,7 @@ public class FloorBlock {
         this.fid = 0;
         this.x = -1;
         this.y = -1;
-        this.block = null;
+        this.bid = 0;
     }
     
     /**
@@ -26,13 +26,13 @@ public class FloorBlock {
      * @param a_fid
      * @param a_x
      * @param a_y
-     * @param a_block 
+     * @param a_bid 
      */
-    public FloorBlock(int a_fid, int a_x, int a_y, Block a_block){
+    public FloorBlock(int a_fid, int a_x, int a_y, int a_bid){
         this.fid = a_fid;
         this.x = a_x;
         this.y = a_y;
-        this.block = a_block;
+        this.bid = a_bid;
     }
 
     /**
@@ -80,14 +80,14 @@ public class FloorBlock {
     /**
      * @return the block
      */
-    public Block getBlock() {
-        return block;
+    public int getBid() {
+        return bid;
     }
 
     /**
-     * @param block the block to set
+     * @param bid the bid to set
      */
-    public void setBlock(Block block) {
-        this.block = block;
+    public void setBid(int bid) {
+        this.bid = bid;
     }
 }

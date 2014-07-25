@@ -10,7 +10,7 @@ public class Block {
     private String meta_name;
     private String meta_dir;
     private String pic_url;
-    private Color meta_color;
+    private int meta_color; //foriegn key to Color
     
     /**
      * No argument constructor of a Block
@@ -21,7 +21,7 @@ public class Block {
         this.meta_name = null;
         this.meta_dir = null;
         this.pic_url = null;
-        this.meta_color = new Color();
+        this.meta_color = 0;
     }
     
     /**
@@ -33,7 +33,7 @@ public class Block {
      * @param a_pic_url 
      * @param a_meta_color
      */
-    public Block(int a_id, String a_name, String a_meta_name, String a_meta_dir, String a_pic_url, Color a_meta_color) {
+    public Block(int a_id, String a_name, String a_meta_name, String a_meta_dir, String a_pic_url, int a_meta_color) {
         this.bid = a_id;
         this.name = a_name;
         this.meta_name = a_meta_name;
@@ -115,14 +115,14 @@ public class Block {
     /**
      * @return the meta_color
      */
-    public Color getMeta_color() {
+    public int getMeta_color() {
         return meta_color;
     }
 
     /**
      * @param meta_color the meta_color to set
      */
-    public void setMeta_color(Color meta_color) {
+    public void setMeta_color(int meta_color) {
         this.meta_color = meta_color;
     }
 }

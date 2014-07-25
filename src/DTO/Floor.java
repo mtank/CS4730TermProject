@@ -9,8 +9,7 @@ public class Floor {
     private int fid;
     private int sid;
     private int floor_num;
-    private FloorBlock[] blocks;
-    
+        
     /**
      * No argument constructor of Floor
      */
@@ -18,7 +17,6 @@ public class Floor {
         this.fid = 0;
         this.sid = 0;
         this.floor_num = 0;
-        this.blocks = null;
     }
     
     /**
@@ -26,15 +24,13 @@ public class Floor {
      * @param a_fid
      * @param a_sid
      * @param a_floor_num
-     * @param a_blocks 
      */
-    public Floor(int a_fid, int a_sid, int a_floor_num, FloorBlock[] a_blocks){
+    public Floor(int a_fid, int a_sid, int a_floor_num){
         this.fid = a_fid;
         this.sid = a_sid;
         this.floor_num = a_floor_num;
-        this.blocks = a_blocks;
     }
-
+     
     /**
      * @return the fid
      */
@@ -75,19 +71,5 @@ public class Floor {
      */
     public void setFloor_num(int floor_num) {
         this.floor_num = floor_num;
-    }
-
-    /**
-     * @return the blocks
-     */
-    public FloorBlock[] getBlocks() {
-        return blocks;
-    }
-
-    /**
-     * @param blocks the blocks to set
-     */
-    public void setBlocks(FloorBlock[] blocks) {
-        this.blocks = blocks;
     }
 }
