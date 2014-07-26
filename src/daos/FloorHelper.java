@@ -10,6 +10,11 @@ import dtos.*;
 public class FloorHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllFloors;
+    protected PreparedStatement getFloorsBySID;
+    protected PreparedStatement getFloorByID;
+    protected PreparedStatement addFloor;
+    protected PreparedStatement updateFloor;
     
     /**
      * FloorHelper constructor
@@ -25,6 +30,11 @@ public class FloorHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            getAllFloors = conn.prepareStatement("select * from [floors]");
+            getFloorsBySID = conn.prepareStatement("select * from [floors] where [sid] = ?");
+            getFloorByID = conn.prepareStatement("select * from [floors] where [id] = ?");
+            addFloor = conn.prepareStatement("insert into [floors] ([columns]) values (?)");
+            updateFloor = conn.prepareStatement("update [floors] set [columns] = ? where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();

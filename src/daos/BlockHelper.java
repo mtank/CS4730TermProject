@@ -10,6 +10,8 @@ import dtos.*;
 public class BlockHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllBlocks;
+    protected PreparedStatement getBlockByID;
     
     /**
      * Initializes the connection to the database and the PreparedStatements
@@ -25,6 +27,8 @@ public class BlockHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            getAllBlocks = conn.prepareStatement("select * from [blocks]");
+            getBlockByID = conn.prepareStatement("select * from [blocks] where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in BlockHelper constructor");
             e.printStackTrace();

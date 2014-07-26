@@ -10,6 +10,11 @@ import dtos.*;
 public class SchematicHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllSchematics;
+    protected PreparedStatement getAllSchematicsByUID;
+    protected PreparedStatement getSchematicByID;
+    protected PreparedStatement addSchematic;
+    protected PreparedStatement updateSchematic;
     
     /**
      * SchematicHelper constructor
@@ -25,6 +30,12 @@ public class SchematicHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            getAllSchematics = conn.prepareStatement("select * from [schematics]");
+            getAllSchematicsByUID = conn.prepareStatement("select * from [schematic] where [owner_uid] = ?");
+            getSchematicByID = conn.prepareStatement("select * from [schematic] where [id] = ?");
+            addSchematic = conn.prepareStatement("insert int [schematic] ([columns]) values (?)");
+            updateSchematic = conn.prepareStatement("update [schematic] set [columns] = ? where [id] = ?");
+            
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();

@@ -10,6 +10,11 @@ import dtos.*;
 public class UserHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllUsers;
+    protected PreparedStatement getUserByID;
+    protected PreparedStatement validateUser;
+    protected PreparedStatement addUser;
+    protected PreparedStatement updateUser;
     
     /**
      * UserHelper constructor; connects to the database and initializes the
@@ -26,6 +31,12 @@ public class UserHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            //need db dump
+            getAllUsers = conn.prepareStatement("select * from ");
+            getUserByID = conn.prepareStatement("select * from [user] where [id] = ?");
+            validateUser = conn.prepareStatement("select * from [user] where [username] = ? and [password] = ?");
+            addUser = conn.prepareStatement("insert into [user] ([columns]) values (?)");
+            updateUser = conn.prepareStatement("update [user] set [...] where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in UserHelper constructor");
             e.printStackTrace();

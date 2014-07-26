@@ -10,6 +10,10 @@ import dtos.*;
 public class TagHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllTags;
+    protected PreparedStatement getTagByID;
+    protected PreparedStatement getTagsBySID;
+    protected PreparedStatement addTag;
     
     /**
      * TagHelper constructor
@@ -25,6 +29,10 @@ public class TagHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            getAllTags = conn.prepareStatement("select * from [tags]");
+            getTagByID = conn.prepareStatement("select * from [tags] where [id] =?");
+            getTagsBySID = conn.prepareStatement("select * from [tags] where [sid] = ?");
+            addTag = conn.prepareStatement("insert into [tags] ([columns]) values (?)");
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();

@@ -10,6 +10,11 @@ import dtos.*;
 public class FloorBlockHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllFloorBlocks;
+    protected PreparedStatement getFloorBlocksByFID;
+    protected PreparedStatement getFloorBlockByFXY;
+    protected PreparedStatement addFloorBlock;
+    protected PreparedStatement updateFloorBlock;
     
     /**
      * FloorBlockHelper constructor
@@ -25,7 +30,12 @@ public class FloorBlockHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-        }catch(Exception e){
+            getAllFloorBlocks = conn.prepareStatement("select * from [floor_blocks]");
+            getFloorBlocksByFID = conn.prepareStatement("select * from [floor_blocks] where [fid] = ?");
+            getFloorBlockByFXY = conn.prepareStatement("select * from [floor_blocks] where [fid] = ?, [x] = ?, [y] =?");
+            addFloorBlock = conn.prepareStatement("insert into [floor_block] ([columns]) value (?)");
+            updateFloorBlock = conn.prepareStatement("update [floor_blocks] set [columns] = ? where fid= ?, [x] = ?, [y] =?");
+            }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();
         }

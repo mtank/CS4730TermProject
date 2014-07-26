@@ -10,6 +10,8 @@ import dtos.*;
 public class ColorHelper {
     protected Connection conn = null;
     //define prepared statements
+    protected PreparedStatement getAllColors;
+    protected PreparedStatement getColorByID;
     
     /**
      * Initializes the PreparedStatements and the connection to the database
@@ -18,13 +20,15 @@ public class ColorHelper {
      * @param pass 
      */
     public ColorHelper(String url, String user, String pass){
-         try{
+        try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(url, user, pass);
             if(conn == null){
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
+            getAllColors = conn.prepareStatement("select * from [colors]");
+            getColorByID = conn.prepareStatement("select * from [colors] where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();
