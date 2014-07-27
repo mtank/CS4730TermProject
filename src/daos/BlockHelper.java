@@ -45,6 +45,24 @@ public class BlockHelper {
      */
     public ArrayList<Block> getBlocks(){
         ArrayList<Block> blocks = new ArrayList<Block>();
+        int bid = 0;
+        String name = "";
+        String meta_name="";
+        String pic_url = "";
+        ResultSet rs;
+        try{
+            rs = getAllBlocks.executeQuery();
+            while(rs.next()){
+                bid=rs.getInt("bid");
+                name=rs.getString("name");
+                meta_name=rs.getString("meta_name");
+                pic_url=rs.getString("pic_url");
+                blocks.add(new Block(bid, name, meta_name, pic_url));
+            }
+        }catch(Exception e){
+            System.out.println("error in block helper get blcoks");
+            e.printStackTrace();
+        }
         
         return blocks;
     }
@@ -55,7 +73,24 @@ public class BlockHelper {
      */
     public Block getBlockById(){
         Block block = new Block();
-        
+        int bid = 0;
+        String name = "";
+        String meta_name="";
+        String pic_url = "";
+        ResultSet rs;
+        try{
+            rs = getBlockByID.executeQuery();
+            while(rs.next()){
+                bid=rs.getInt("bid");
+                name=rs.getString("name");
+                meta_name=rs.getString("meta_name");
+                pic_url=rs.getString("pic_url");
+            }                
+            block =new Block(bid, name, meta_name, pic_url);
+        }catch(Exception e){
+            System.out.println("error in block helper get blcoks");
+            e.printStackTrace();
+        }
         return block;
     }
     

@@ -52,7 +52,25 @@ public class SchematicHelper {
      */
     public ArrayList<Schematic> getSchematics() {
         ArrayList<Schematic> schems = new ArrayList<Schematic>();
-        
+        int sid = 0;
+        int uid = 0;
+        String name ="";
+        int size=0;
+        ResultSet rs;
+        try{
+            rs = getAllSchematics.executeQuery();
+            while(rs.next()){
+                sid =rs.getInt("sid");
+                uid=rs.getInt("owner_uid");
+                name=rs.getString("name");
+                size=rs.getInt("size");
+                schems.add(new Schematic(sid, uid, name, size));
+            }
+        }catch(Exception e){
+            System.out.println("error in schematichelper getschematic");
+            e.printStackTrace();
+        }
+    
         return schems;
     }
     
@@ -62,7 +80,24 @@ public class SchematicHelper {
      */
     public ArrayList<Schematic> getSchematicsByUser(){
         ArrayList<Schematic> schems = new ArrayList<Schematic>();
-        
+        int sid = 0;
+        int uid = 0;
+        String name ="";
+        int size=0;
+        ResultSet rs;
+        try{
+            rs = getAllSchematicsByUID.executeQuery();
+            while(rs.next()){
+                sid =rs.getInt("sid");
+                uid=rs.getInt("owner_uid");
+                name=rs.getString("name");
+                size=rs.getInt("size");
+                schems.add(new Schematic(sid, uid, name, size));
+            }
+        }catch(Exception e){
+            System.out.println("error in schematichelper getschematic");
+            e.printStackTrace();
+        }
         return schems;
     }
     
@@ -72,7 +107,24 @@ public class SchematicHelper {
      */
     public Schematic getSchematicByID(){
         Schematic schem = new Schematic();
-        
+        int sid = 0;
+        int uid = 0;
+        String name ="";
+        int size=0;
+        ResultSet rs;
+        try{
+            rs = getSchematicByID.executeQuery();
+            while(rs.next()){
+                sid =rs.getInt("sid");
+                uid=rs.getInt("owner_uid");
+                name=rs.getString("name");
+                size=rs.getInt("size");
+            }
+            schem = new Schematic(sid, uid, name, size);
+        }catch(Exception e){
+            System.out.println("error in schematichelper getschematic");
+            e.printStackTrace();
+        }
         return schem;
     }
     

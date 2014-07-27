@@ -51,7 +51,22 @@ public class FloorHelper {
      */
     public ArrayList<Floor> getFloors(){
         ArrayList<Floor> floors = new ArrayList<Floor>();
-        
+        int fid = 0;
+        int sid = 0;
+        int floor_num = 0;
+        ResultSet rs;
+        try{
+            rs = getAllFloors.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                sid=rs.getInt("sid");
+                floor_num=rs.getInt("floor_num");
+                floors.add(new Floor(fid, sid, floor_num));
+            }
+        }catch(Exception e){
+            System.out.println("error in floor helper");
+            e.printStackTrace();
+        }
         return floors;
     }
     
@@ -61,7 +76,22 @@ public class FloorHelper {
      */
     public ArrayList<Floor> getFloorsBySID(){
         ArrayList<Floor> floors = new ArrayList<Floor>();
-        
+        int fid = 0;
+        int sid = 0;
+        int floor_num = 0;
+        ResultSet rs;
+        try{
+            rs = getFloorsBySID.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                sid=rs.getInt("sid");
+                floor_num=rs.getInt("floor_num");
+                floors.add(new Floor(fid, sid, floor_num));
+            }
+        }catch(Exception e){
+            System.out.println("error in floor helper");
+            e.printStackTrace();
+        }
         return floors;
     }
     
@@ -71,7 +101,22 @@ public class FloorHelper {
      */
     public Floor getFloorById(){
         Floor floor = new Floor();
-        
+        int fid = 0;
+        int sid = 0;
+        int floor_num = 0;
+        ResultSet rs;
+        try{
+            rs = getAllFloors.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                sid=rs.getInt("sid");
+                floor_num=rs.getInt("floor_num");
+            }  
+            floor = new Floor(fid, sid, floor_num);
+        }catch(Exception e){
+            System.out.println("error in floor helper");
+            e.printStackTrace();
+        }
         return floor;
     }
     

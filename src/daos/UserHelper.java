@@ -53,7 +53,26 @@ public class UserHelper {
      */
     public ArrayList<User> getUsers(){
         ArrayList<User> users = new ArrayList<User>();
-        //code for later
+        int uid = 0;
+        String username = null;
+        String pass = null;
+        String email = null;
+        Date lli = null;
+        ResultSet rs;
+        try{
+            rs = getAllUsers.executeQuery();
+            while(rs.next()){
+                uid = rs.getInt("uid");
+                username = rs.getString("username");
+                pass = rs.getString("password");
+                email = rs.getString("email");
+                lli = rs.getDate("last_access");
+                users.add(new User(uid, username, pass, email, lli));
+            }
+        }catch(Exception e){
+            System.out.println("error in userhelper getUsers");
+            e.printStackTrace();
+        }
         return users;
     }
     
@@ -63,7 +82,26 @@ public class UserHelper {
      */
     public User getUserByID(){
         User user = new User();
-        
+        int uid = 0;
+        String username = null;
+        String pass = null;
+        String email = null;
+        Date lli = null;
+        ResultSet rs;
+        try{
+            rs = getUserByID.executeQuery();
+            while(rs.next()){
+                uid = rs.getInt("uid");
+                username = rs.getString("username");
+                pass = rs.getString("password");
+                email = rs.getString("email");
+                lli = rs.getDate("last_access");
+            }
+            user = new User(uid, username, pass, email, lli);
+        }catch(Exception e){
+            System.out.println("error in userhelper getUsers");
+            e.printStackTrace();
+        }
         return user;
     }
     
@@ -77,7 +115,24 @@ public class UserHelper {
      */
     public User validateUser(String username, String password){
         User user = null;
-        
+        int uid = 0;
+        String email = "";
+        Date last_access = null;
+        ResultSet rs;
+        try{
+           validateUser.setString(1, username);
+           validateUser.setString(2, password);
+           rs = validateUser.executeQuery();
+           while(rs.next()){
+               uid = rs.getInt("uid");
+               email = rs.getString("email");
+               last_access = rs.getDate("last_access");
+           }
+           user = new User(uid, username, password, email, last_access);
+        }catch(Exception e){
+            System.out.println("error in userhelper validateUser");
+            e.printStackTrace();
+        }
         return user;
     }
     

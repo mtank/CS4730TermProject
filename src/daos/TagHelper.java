@@ -49,7 +49,22 @@ public class TagHelper {
      */
     public ArrayList<Tag> getTags(){
         ArrayList<Tag> tags = new ArrayList<Tag>();
-        
+        int tid=0;
+        int sid=0;
+        String value="";
+        ResultSet rs;
+        try{
+            rs=getAllTags.executeQuery();
+            while(rs.next()){
+                tid=rs.getInt("tid");
+                sid=rs.getInt("sid");
+                value=rs.getString("value");
+                tags.add(new Tag(tid,sid,value));
+            }
+        }catch(Exception e){
+            System.out.println("error in tagHelper");
+            e.printStackTrace();
+        }
         return tags;
     }
     
@@ -59,7 +74,22 @@ public class TagHelper {
      */
     public ArrayList<Tag> getTagsBySID(){
         ArrayList<Tag> tags = new ArrayList<Tag>();
-        
+        int tid=0;
+        int sid=0;
+        String value="";
+        ResultSet rs;
+        try{
+            rs=getTagsBySID.executeQuery();
+            while(rs.next()){
+                tid=rs.getInt("tid");
+                sid=rs.getInt("sid");
+                value=rs.getString("value");
+                tags.add(new Tag(tid,sid,value));
+            }
+        }catch(Exception e){
+            System.out.println("error in tagHelper");
+            e.printStackTrace();
+        }
         return tags;
     }
     
@@ -69,7 +99,22 @@ public class TagHelper {
      */
     public Tag getTagByID(){
         Tag tag = new Tag();
-        
+        int tid=0;
+        int sid=0;
+        String value="";
+        ResultSet rs;
+        try{
+            rs=getTagByID.executeQuery();
+            while(rs.next()){
+                tid=rs.getInt("tid");
+                sid=rs.getInt("sid");
+                value=rs.getString("value");
+                tag=new Tag(tid,sid,value);
+            }
+        }catch(Exception e){
+            System.out.println("error in tagHelper");
+            e.printStackTrace();
+        }
         return tag;
     }
     

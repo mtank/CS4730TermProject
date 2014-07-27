@@ -52,7 +52,24 @@ public class FloorBlockHelper {
      */
     public ArrayList<FloorBlock> getFloorBlocks(){
         ArrayList<FloorBlock> floorBlocks = new ArrayList<FloorBlock>();
-        
+        int fid=0;
+        int bid=0;
+        int x=0;
+        int y=0;
+        ResultSet rs;
+        try{
+            rs=getAllFloorBlocks.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                bid=rs.getInt("bid");
+                x=rs.getInt("x");
+                y=rs.getInt("y");
+                floorBlocks.add(new FloorBlock(fid,bid,x,y));
+            }
+        }catch(Exception e){
+            System.out.println("error in floor block helper");
+            e.printStackTrace();
+        }
         return floorBlocks;
     }
     
@@ -62,7 +79,24 @@ public class FloorBlockHelper {
      */
     public ArrayList<FloorBlock> getFloorBlocksByFID(){
         ArrayList<FloorBlock> floorBlocks = new ArrayList<FloorBlock>();
-        
+        int fid=0;
+        int bid=0;
+        int x=0;
+        int y=0;
+        ResultSet rs;
+        try{
+            rs=getFloorBlocksByFID.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                bid=rs.getInt("bid");
+                x=rs.getInt("x");
+                y=rs.getInt("y");
+                floorBlocks.add(new FloorBlock(fid,bid,x,y));
+            }
+        }catch(Exception e){
+            System.out.println("error in floor block helper");
+            e.printStackTrace();
+        }
         return floorBlocks;
     }
     
@@ -72,7 +106,24 @@ public class FloorBlockHelper {
      */
     public FloorBlock getFloorBlockByFXY(){
         FloorBlock floorBlock = new FloorBlock();
-        
+        int fid=0;
+        int bid=0;
+        int x=0;
+        int y=0;
+        ResultSet rs;
+        try{
+            rs=getFloorBlockByFXY.executeQuery();
+            while(rs.next()){
+                fid=rs.getInt("fid");
+                bid=rs.getInt("bid");
+                x=rs.getInt("x");
+                y=rs.getInt("y");
+            }                
+            floorBlock=new FloorBlock(fid,bid,x,y);
+        }catch(Exception e){
+            System.out.println("error in floor block helper");
+            e.printStackTrace();
+        }
         return floorBlock;
     }
     
