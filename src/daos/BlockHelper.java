@@ -13,6 +13,10 @@ public class BlockHelper {
     protected PreparedStatement getAllBlocks;
     protected PreparedStatement getBlockByID;
     
+    public BlockHelper(){
+        
+    }
+    
     /**
      * Initializes the connection to the database and the PreparedStatements
      * @param url
@@ -27,8 +31,8 @@ public class BlockHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-            getAllBlocks = conn.prepareStatement("select * from [blocks]");
-            getBlockByID = conn.prepareStatement("select * from [blocks] where [id] = ?");
+            getAllBlocks = conn.prepareStatement("select * from blocks");
+            getBlockByID = conn.prepareStatement("select * from blocks where bid = ?");
         }catch(Exception e){
             System.out.println("Error in BlockHelper constructor");
             e.printStackTrace();
@@ -47,12 +51,20 @@ public class BlockHelper {
     
     /**
      * Retrieves a block from the database based on its id
-     * @param id
      * @return 
      */
-    public Block getBlockById(int id){
+    public Block getBlockById(){
         Block block = new Block();
         
         return block;
+    }
+    
+    public void setBid(int id){
+        try{
+            getBlockByID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in blockHelper setBid");
+            e.printStackTrace();
+        }
     }
 }

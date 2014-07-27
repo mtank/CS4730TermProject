@@ -16,6 +16,10 @@ public class FloorBlockHelper {
     protected PreparedStatement addFloorBlock;
     protected PreparedStatement updateFloorBlock;
     
+    public FloorBlockHelper(){
+        
+    }
+    
     /**
      * FloorBlockHelper constructor
      * @param url
@@ -30,12 +34,13 @@ public class FloorBlockHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-            getAllFloorBlocks = conn.prepareStatement("select * from [floor_blocks]");
-            getFloorBlocksByFID = conn.prepareStatement("select * from [floor_blocks] where [fid] = ?");
-            getFloorBlockByFXY = conn.prepareStatement("select * from [floor_blocks] where [fid] = ?, [x] = ?, [y] =?");
-            addFloorBlock = conn.prepareStatement("insert into [floor_block] ([columns]) value (?)");
-            updateFloorBlock = conn.prepareStatement("update [floor_blocks] set [columns] = ? where fid= ?, [x] = ?, [y] =?");
-            }catch(Exception e){
+            getAllFloorBlocks = conn.prepareStatement("select * from floor_blocks");
+            getFloorBlocksByFID = conn.prepareStatement("select * from floor_blocks where fid = ?");
+            getFloorBlockByFXY = conn.prepareStatement("select * from floor_blocks where fid = ?, x = ?, y =?");
+            addFloorBlock = conn.prepareStatement("insert into [floor_block] (fid, bid, x, y) value (?, ?, ?, ?)");
+            //updateFloorBlock = conn.prepareStatement("update [floor_blocks] set [columns] = ? where fid= ?, [x] = ?, [y] =?");
+        }
+        catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();
         }
@@ -53,10 +58,9 @@ public class FloorBlockHelper {
     
     /**
      * Retrieve all the FloorBlocks of a floor
-     * @param fid
      * @return 
      */
-    public ArrayList<FloorBlock> getFloorBlocksByFID(int fid){
+    public ArrayList<FloorBlock> getFloorBlocksByFID(){
         ArrayList<FloorBlock> floorBlocks = new ArrayList<FloorBlock>();
         
         return floorBlocks;
@@ -64,12 +68,9 @@ public class FloorBlockHelper {
     
     /**
      * Retrieve a specific unique FloorBlock
-     * @param fid
-     * @param x
-     * @param y
      * @return 
      */
-    public FloorBlock getFloorBlockByFXY(int fid, int x, int y){
+    public FloorBlock getFloorBlockByFXY(){
         FloorBlock floorBlock = new FloorBlock();
         
         return floorBlock;
@@ -91,5 +92,34 @@ public class FloorBlockHelper {
      */
     public int udpateFloorBlock(FloorBlock u_floor_block){
         return 0;
+    }
+    
+    public void setFid(int id){
+        try{
+            getFloorBlocksByFID.setInt(1, id);
+            getFloorBlockByFXY.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in floorblockhelper setfid");
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void setX(int x){
+        try{
+            getFloorBlockByFXY.setInt(2, x);
+        }catch(Exception e){
+            System.out.println("error in floorblockhelper setx");
+            e.printStackTrace();
+        }
+    }
+    
+    public void setY(int y){
+        try{
+            getFloorBlockByFXY.setInt(3, y);
+        }catch(Exception e){
+            System.out.println("error in floorblockhelper sety");
+            e.printStackTrace();
+        }
     }
 }

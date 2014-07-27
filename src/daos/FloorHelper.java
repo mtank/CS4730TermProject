@@ -16,6 +16,10 @@ public class FloorHelper {
     protected PreparedStatement addFloor;
     protected PreparedStatement updateFloor;
     
+    public FloorHelper(){
+    
+    }
+    
     /**
      * FloorHelper constructor
      * @param url
@@ -30,11 +34,11 @@ public class FloorHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-            getAllFloors = conn.prepareStatement("select * from [floors]");
-            getFloorsBySID = conn.prepareStatement("select * from [floors] where [sid] = ?");
-            getFloorByID = conn.prepareStatement("select * from [floors] where [id] = ?");
-            addFloor = conn.prepareStatement("insert into [floors] ([columns]) values (?)");
-            updateFloor = conn.prepareStatement("update [floors] set [columns] = ? where [id] = ?");
+            getAllFloors = conn.prepareStatement("select * from floors");
+            getFloorsBySID = conn.prepareStatement("select * from floors where sid = ?");
+            getFloorByID = conn.prepareStatement("select * from floors where fid = ?");
+            addFloor = conn.prepareStatement("insert into floors (sid, floor_num) values (?, ?)");
+            //updateFloor = conn.prepareStatement("update [floors] set [columns] = ? where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
             e.printStackTrace();
@@ -53,10 +57,9 @@ public class FloorHelper {
     
     /**
      * Retrieves all of a schematics floors
-     * @param sid
      * @return 
      */
-    public ArrayList<Floor> getFloorsBySID(int sid){
+    public ArrayList<Floor> getFloorsBySID(){
         ArrayList<Floor> floors = new ArrayList<Floor>();
         
         return floors;
@@ -64,10 +67,9 @@ public class FloorHelper {
     
     /**
      * Retrieves a specific floor from the database
-     * @param id
      * @return 
      */
-    public Floor getFloorById(int id){
+    public Floor getFloorById(){
         Floor floor = new Floor();
         
         return floor;
@@ -89,5 +91,23 @@ public class FloorHelper {
      */
     public int updateFloor(Floor u_floor){
         return 0;
+    }
+    
+    public void setSid(int id){
+        try{
+            getFloorsBySID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in floorHelper setSid");
+            e.printStackTrace();
+        }
+    }
+    
+    public void setFid(int id){
+        try{
+            getFloorByID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in floorHelper setFId");
+            e.printStackTrace();
+        }
     }
 }

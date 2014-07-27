@@ -16,6 +16,10 @@ public class SchematicHelper {
     protected PreparedStatement addSchematic;
     protected PreparedStatement updateSchematic;
     
+    public SchematicHelper(){
+        
+    }
+    
     /**
      * SchematicHelper constructor
      * @param url
@@ -30,11 +34,11 @@ public class SchematicHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-            getAllSchematics = conn.prepareStatement("select * from [schematics]");
-            getAllSchematicsByUID = conn.prepareStatement("select * from [schematic] where [owner_uid] = ?");
-            getSchematicByID = conn.prepareStatement("select * from [schematic] where [id] = ?");
-            addSchematic = conn.prepareStatement("insert int [schematic] ([columns]) values (?)");
-            updateSchematic = conn.prepareStatement("update [schematic] set [columns] = ? where [id] = ?");
+            getAllSchematics = conn.prepareStatement("select * from schematics");
+            getAllSchematicsByUID = conn.prepareStatement("select * from schematics where owner_uid = ?");
+            getSchematicByID = conn.prepareStatement("select * from schematics where sid = ?");
+            addSchematic = conn.prepareStatement("insert into schematics (owner_uid, name, size) values (?, ?, ?)");
+            //updateSchematic = conn.prepareStatement("update [schematic] set [columns] = ? where [id] = ?");
             
         }catch(Exception e){
             System.out.println("Error in ColorHelper constructor");
@@ -54,10 +58,9 @@ public class SchematicHelper {
     
     /**
      * Retrieve all of a user's schematics
-     * @param uid
      * @return 
      */
-    public ArrayList<Schematic> getSchematicsByUser(int uid){
+    public ArrayList<Schematic> getSchematicsByUser(){
         ArrayList<Schematic> schems = new ArrayList<Schematic>();
         
         return schems;
@@ -65,10 +68,9 @@ public class SchematicHelper {
     
     /**
      * Retrieves a specific schematic from the database
-     * @param id
      * @return 
      */
-    public Schematic getSchematicByID(int id){
+    public Schematic getSchematicByID(){
         Schematic schem = new Schematic();
         
         return schem;
@@ -91,5 +93,23 @@ public class SchematicHelper {
      */
     public int updateSchematic(Schematic u_schem){
         return 0;
+    }
+    
+    public void setOwner_uid(int id){
+        try{
+            getAllSchematicsByUID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in schematicHelper setOwner_uid");
+            e.printStackTrace();
+        }
+    }
+    
+    public void setSid(int id){
+        try{
+            getSchematicByID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in schematicHelper setSid");
+            e.printStackTrace();
+        }
     }
 }

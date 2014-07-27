@@ -15,6 +15,10 @@ public class TagHelper {
     protected PreparedStatement getTagsBySID;
     protected PreparedStatement addTag;
     
+    public TagHelper(){
+        
+    }
+    
     /**
      * TagHelper constructor
      * @param url
@@ -29,12 +33,12 @@ public class TagHelper {
                 throw new Exception("Unable to connect to database");
             }
             //initialize prepared statements
-            getAllTags = conn.prepareStatement("select * from [tags]");
-            getTagByID = conn.prepareStatement("select * from [tags] where [id] =?");
-            getTagsBySID = conn.prepareStatement("select * from [tags] where [sid] = ?");
-            addTag = conn.prepareStatement("insert into [tags] ([columns]) values (?)");
+            getAllTags = conn.prepareStatement("select * from tags");
+            getTagByID = conn.prepareStatement("select * from tags where tid =?");
+            getTagsBySID = conn.prepareStatement("select * from tags where sid = ?");
+            addTag = conn.prepareStatement("insert into tags (tid, value) values (?, ?)");
         }catch(Exception e){
-            System.out.println("Error in ColorHelper constructor");
+            System.out.println("Error in TagHelper constructor");
             e.printStackTrace();
         }
     }
@@ -51,10 +55,9 @@ public class TagHelper {
     
     /**
      * Retrieve all of schematic's tags
-     * @param sid
      * @return 
      */
-    public ArrayList<Tag> getTagsBySID(int sid){
+    public ArrayList<Tag> getTagsBySID(){
         ArrayList<Tag> tags = new ArrayList<Tag>();
         
         return tags;
@@ -62,10 +65,9 @@ public class TagHelper {
     
     /**
      * Retrieves a single tag from the database
-     * @param id
      * @return 
      */
-    public Tag getTagByID(int id){
+    public Tag getTagByID(){
         Tag tag = new Tag();
         
         return tag;
@@ -78,5 +80,23 @@ public class TagHelper {
      */
     public int addTag(Tag n_tag){
         return -1;
+    }
+    
+    public void setTid(int id){
+        try{
+            getTagByID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in tagHelper settid");
+            e.printStackTrace();
+        }
+    }
+    
+    public void setSid(int sid){
+        try{
+            getTagsBySID.setInt(1, sid);
+        }catch(Exception e){
+            System.out.println("error in taghelper setsid");
+            e.printStackTrace();
+        }
     }
 }

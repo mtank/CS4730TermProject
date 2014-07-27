@@ -16,6 +16,10 @@ public class UserHelper {
     protected PreparedStatement addUser;
     protected PreparedStatement updateUser;
     
+    public UserHelper(){
+        
+    }
+    
     /**
      * UserHelper constructor; connects to the database and initializes the
      * PreparedStatements
@@ -32,11 +36,11 @@ public class UserHelper {
             }
             //initialize prepared statements
             //need db dump
-            getAllUsers = conn.prepareStatement("select * from ");
-            getUserByID = conn.prepareStatement("select * from [user] where [id] = ?");
-            validateUser = conn.prepareStatement("select * from [user] where [username] = ? and [password] = ?");
-            addUser = conn.prepareStatement("insert into [user] ([columns]) values (?)");
-            updateUser = conn.prepareStatement("update [user] set [...] where [id] = ?");
+            getAllUsers = conn.prepareStatement("select * from users");
+            getUserByID = conn.prepareStatement("select * from users where uid = ?");
+            validateUser = conn.prepareStatement("select * from users where username = ? and password = ?");
+            addUser = conn.prepareStatement("insert into users (username, password, email) values (?, ?, ?)");
+            //updateUser = conn.prepareStatement("update users set [...] where [id] = ?");
         }catch(Exception e){
             System.out.println("Error in UserHelper constructor");
             e.printStackTrace();
@@ -55,10 +59,9 @@ public class UserHelper {
     
     /**
      * Retrieves a single user from the database based on an id
-     * @param id
      * @return 
      */
-    public User getUserByID(int id){
+    public User getUserByID(){
         User user = new User();
         
         return user;
@@ -87,4 +90,14 @@ public class UserHelper {
     public int addUser(User newUser){
         return -1;
     }
+    
+    public void setId(int id){
+        try{
+            getUserByID.setInt(1, id);
+        }catch(Exception e){
+            System.out.println("error in userHelper setId");
+            e.printStackTrace();
+        }
+    }
+
 }
