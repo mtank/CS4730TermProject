@@ -127,8 +127,8 @@ public class UserHelper {
                uid = rs.getInt("uid");
                email = rs.getString("email");
                last_access = rs.getDate("last_access");
+               user = new User(uid, username, password, email, last_access);
            }
-           user = new User(uid, username, password, email, last_access);
         }catch(Exception e){
             System.out.println("error in userhelper validateUser");
             e.printStackTrace();
