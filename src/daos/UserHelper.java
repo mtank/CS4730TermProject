@@ -143,7 +143,32 @@ public class UserHelper {
      * @return 
      */
     public int addUser(User newUser){
-        return -1;
+        try{
+            addUser.setString(1, newUser.getUsername());
+            addUser.setString(2, newUser.getPassword());
+            addUser.setString(3, newUser.getEmail());
+        }catch(Exception e){
+            System.out.println("add user set query");
+            e.printStackTrace();
+        }
+        int uid=0;
+        int q=0;
+        ResultSet rs;
+        try{
+            q=addUser.executeUpdate();
+            if(q==1){
+                rs=addUser.getGeneratedKeys();
+                while(rs.next()){
+                    uid=rs.getInt(1);
+                    if(uid<=0)
+                        uid=-1;
+                }
+            }
+        }catch(Exception e){
+            System.out.println("add user execute");
+            e.printStackTrace();
+        }
+        return uid;
     }
     
     public void setId(int id){

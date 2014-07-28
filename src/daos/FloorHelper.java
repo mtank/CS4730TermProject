@@ -126,7 +126,31 @@ public class FloorHelper {
      * @return 
      */
     public int addFloor(Floor n_floor){
-        return -1;
+        try{
+            addFloor.setInt(1, n_floor.getSid());
+            addFloor.setInt(2, n_floor.getFloor_num());
+        }catch(Exception e){
+            System.out.println("add floor set query");
+            e.printStackTrace();
+        }
+        int fid=0;
+        int q=0;
+        ResultSet rs;
+        try{
+            q=addFloor.executeUpdate();
+            if(q==1){
+                rs=addFloor.getGeneratedKeys();
+                while(rs.next()){
+                    fid=rs.getInt(1);
+                }
+                if(fid<=0)
+                    fid=-1;
+            }
+        }catch(Exception e){
+            System.out.println("add floor execute");
+            e.printStackTrace();
+        }
+        return fid;
     }
     
     /**

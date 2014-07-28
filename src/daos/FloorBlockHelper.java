@@ -133,6 +133,26 @@ public class FloorBlockHelper {
      * @return 
      */
     public int addFloorBlock(FloorBlock n_floor_block){
+        try{
+            addFloorBlock.setInt(1, n_floor_block.getFid());
+            addFloorBlock.setInt(2, n_floor_block.getBid());
+            addFloorBlock.setInt(3, n_floor_block.getX());
+            addFloorBlock.setInt(4, n_floor_block.getY());
+        }catch(Exception e){
+            System.out.println("add floor block set query");
+            e.printStackTrace();
+        }
+        int q=0;
+        ResultSet rs;
+        try{
+            q=addFloorBlock.executeUpdate();
+            if(q==1){
+                return n_floor_block.getFid();
+            }
+        }catch(Exception e){
+            System.out.println("add floor block execute");
+            e.printStackTrace();
+        }
         return -1;
     }
     

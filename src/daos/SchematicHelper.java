@@ -135,7 +135,32 @@ public class SchematicHelper {
      * @return 
      */
     public int addSchematic(Schematic n_schem){
-        return -1;
+        try{
+            addSchematic.setInt(1, n_schem.getOwner_uid());
+            addSchematic.setString(2, n_schem.getName());
+            addSchematic.setInt(3, n_schem.getSize());
+        }catch(Exception e){
+            System.out.println("add schematic set query");
+            e.printStackTrace();
+        }
+        int sid=0;
+        int q=0;
+        ResultSet rs;
+        try{
+            q=addSchematic.executeUpdate();
+            if(q==1){
+                rs=addSchematic.getGeneratedKeys();
+                while(rs.next()){
+                    sid=rs.getInt(1);
+                    if(sid<=0)
+                        sid=-1;
+                }
+            }
+        }catch(Exception e){
+            System.out.println("add schematic execute");
+            e.printStackTrace();
+        }
+        return sid;
     }
     
     /**

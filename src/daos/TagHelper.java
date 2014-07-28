@@ -36,7 +36,7 @@ public class TagHelper {
             getAllTags = conn.prepareStatement("select * from tags");
             getTagByID = conn.prepareStatement("select * from tags where tid =?");
             getTagsBySID = conn.prepareStatement("select * from tags where sid = ?");
-            addTag = conn.prepareStatement("insert into tags (tid, value) values (?, ?)");
+            addTag = conn.prepareStatement("insert into tags (sid, value) values (?, ?)");
         }catch(Exception e){
             System.out.println("Error in TagHelper constructor");
             e.printStackTrace();
@@ -124,7 +124,31 @@ public class TagHelper {
      * @return 
      */
     public int addTag(Tag n_tag){
-        return -1;
+        try{
+            addTag.setInt(1, n_tag.getSid());
+            addTag.setString(2, n_tag.getValue());
+        }catch(Exception e){
+            System.out.println("add tag set query");
+            e.printStackTrace();
+        }
+        int tid = 0;
+        int q=0;
+        ResultSet r;
+        try{
+            q=addTag.executeUpdate();
+            if(q==1){
+                r=addTag.getGeneratedKeys();
+                while(r.next()){
+                    tid=r.getInt(1);
+                    if(tid<=0)
+                        tid=-1;
+                }
+            }
+        }catch(Exception e){
+            System.out.println("add tag execute");
+            e.printStackTrace();
+        }
+        return tid;
     }
     
     public void setTid(int id){
