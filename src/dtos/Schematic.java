@@ -1,5 +1,6 @@
 package dtos;
 
+import java.util.ArrayList;
 /**
  *
  * @author Michael
@@ -10,6 +11,7 @@ public class Schematic {
     private int owner_uid;
     private String name;
     private int size;
+    private ArrayList<Tag> tags;
     
     /**
      * No argument constructor for Schematic
@@ -28,11 +30,12 @@ public class Schematic {
      * @param a_name
      * @param a_size
      */
-    public Schematic(int a_sid, int a_owner_uid, String a_name, int a_size){
+    public Schematic(int a_sid, int a_owner_uid, String a_name, int a_size, ArrayList<Tag> a_tags){
         this.sid = a_sid;
         this.owner_uid = a_owner_uid;
         this.name = a_name;
         this.size = a_size;
+        this.tags = a_tags;
     }
 
     /**
@@ -89,5 +92,17 @@ public class Schematic {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+    
+    public String getTags(){
+        String tagString ="";
+        for(int i =0; i<tags.size();i++){
+            tagString += tags.get(i).getValue()+" ";
+        }
+        return tagString;
+    }
+    
+    public void setTags(ArrayList<Tag> tags){
+        this.tags=tags;
     }
 }
