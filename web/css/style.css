@@ -1,0 +1,207 @@
+#toolbar {
+	height: 450px;
+	width: 300px;
+	background: gray;
+	overflow: auto;
+}
+
+#button {
+	height: 30px;
+	width: 300px;
+	background: gray;
+	margin-top: 20px;
+}
+
+#cnv {
+	height: 600px;
+	width: 920px;
+	background: #eee;
+}
+
+.tool_row {
+	width: 300px;
+	margin: 7px 1px 0px 18px;
+}
+
+.tool {
+	width: 40px;
+	height: 40px;
+	margin: 2px;
+	float: left;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	background-image: url('../img/Sprite_Sheet.png');
+}
+
+#start {
+	color: gray;
+	border-style: solid;
+	border-color: white;
+
+}
+
+[id='0']   { background-position:   0px   0px; }
+[id='1']   { background-position: -40px   0px; }
+[id='2']   { background-position: -80px   0px; }
+[id='3']   { background-position: -120px  0px; }
+[id='4']   { background-position: -160px  0px; }
+[id='5']   { background-position: -200px  0px; }
+[id='6']   { background-position: -240px  0px; }
+[id='7']   { background-position: -280px  0px; }
+[id='8']   { background-position: -320px  0px; }
+[id='9']   { background-position: -360px  0px; }
+[id='10']  { background-position: -400px  0px; }
+[id='11']  { background-position: -440px  0px; }
+[id='12']  { background-position: -480px  0px; }
+[id='13']  { background-position: -520px  0px; }
+[id='14']  { background-position: -560px  0px; }
+[id='15']  { background-position: -600px  0px; }
+[id='16']  { background-position: -640px  0px; }
+[id='17']  { background-position: -680px  0px; }
+[id='18']  { background-position: -720px  0px; }
+[id='19']  { background-position: -760px  0px; }
+[id='20']  { background-position: -800px  0px; }
+[id='21']  { background-position: -840px  0px; }
+[id='22']  { background-position: -880px  0px; }
+[id='23']  { background-position: -920px  0px; }
+[id='24']  { background-position: -960px  0px; }
+[id='25']  { background-position: -1000px 0px; }
+[id='26']  { background-position: -1040px 0px; }
+[id='27']  { background-position: -1080px 0px; }
+[id='28']  { background-position: -1120px 0px; }
+[id='29']  { background-position: -1160px 0px; }
+[id='30']  { background-position: -1200px 0px; }
+[id='31']  { background-position: -1240px 0px; }
+[id='32']  { background-position: -1280px 0px; }
+[id='33']  { background-position: -1320px 0px; }
+[id='34']  { background-position: -1360px 0px; }
+[id='35']  { background-position: -1400px 0px; }
+[id='36']  { background-position: -1440px 0px; }
+[id='37']  { background-position: -1480px 0px; }
+[id='38']  { background-position: -1520px 0px; }
+[id='39']  { background-position: -1560px 0px; }
+[id='40']  { background-position: -1600px 0px; }
+[id='41']  { background-position: -1640px 0px; }
+[id='42']  { background-position: -1680px 0px; }
+[id='43']  { background-position: -1720px 0px; }
+[id='44']  { background-position: -1760px 0px; }
+[id='45']  { background-position: -1800px 0px; }
+[id='46']  { background-position: -1840px 0px; }
+[id='47']  { background-position: -1880px 0px; }
+[id='48']  { background-position: -1920px 0px; }
+[id='49']  { background-position: -1960px 0px; }
+[id='50']  { background-position: -2000px 0px; }
+[id='51']  { background-position: -2040px 0px; }
+[id='52']  { background-position: -2080px 0px; }
+[id='53']  { background-position: -2120px 0px; }
+[id='54']  { background-position: -2160px 0px; }
+[id='55']  { background-position: -2200px 0px; }
+[id='56']  { background-position: -2240px 0px; }
+[id='57']  { background-position: -2280px 0px; }
+[id='58']  { background-position: -2320px 0px; }
+[id='59']  { background-position: -2360px 0px; }
+[id='60']  { background-position: -2400px 0px; }
+[id='61']  { background-position: -2440px 0px; }
+[id='62']  { background-position: -2480px 0px; }
+[id='63']  { background-position: -2520px 0px; }
+[id='64']  { background-position: -2560px 0px; }
+[id='65']  { background-position: -2600px 0px; }
+[id='66']  { background-position: -2640px 0px; }
+[id='67']  { background-position: -2680px 0px; }
+[id='68']  { background-position: -2720px 0px; }
+[id='69']  { background-position: -2760px 0px; }
+[id='70']  { background-position: -2800px 0px; }
+[id='71']  { background-position: -2840px 0px; }
+[id='72']  { background-position: -2880px 0px; }
+[id='73']  { background-position: -2920px 0px; }
+[id='74']  { background-position: -2960px 0px; }
+[id='75']  { background-position: -3000px 0px; }
+[id='76']  { background-position: -3040px 0px; }
+[id='77']  { background-position: -3080px 0px; }
+[id='78']  { background-position: -3120px 0px; }
+[id='79']  { background-position: -3160px 0px; }
+[id='80']  { background-position: -3200px 0px; }
+[id='81']  { background-position: -3240px 0px; }
+[id='82']  { background-position: -3280px 0px; }
+[id='83']  { background-position: -3320px 0px; }
+[id='84']  { background-position: -3360px 0px; }
+[id='85']  { background-position: -3400px 0px; }
+[id='86']  { background-position: -3440px 0px; }
+[id='87']  { background-position: -3480px 0px; }
+[id='88']  { background-position: -3520px 0px; }
+[id='89']  { background-position: -3560px 0px; }
+[id='90']  { background-position: -3600px 0px; }
+[id='91']  { background-position: -3640px 0px; }
+[id='92']  { background-position: -3680px 0px; }
+[id='93']  { background-position: -3720px 0px; }
+[id='94']  { background-position: -3760px 0px; }
+[id='95']  { background-position: -3800px 0px; }
+[id='96']  { background-position: -3840px 0px; }
+[id='97']  { background-position: -3880px 0px; }
+[id='98']  { background-position: -3920px 0px; }
+[id='99']  { background-position: -3960px 0px; }
+[id='100'] { background-position: -4000px 0px; }
+[id='101'] { background-position: -4040px 0px; }
+[id='102'] { background-position: -4080px 0px; }
+[id='103'] { background-position: -4120px 0px; }
+[id='104'] { background-position: -4160px 0px; }
+[id='105'] { background-position: -4200px 0px; }
+[id='106'] { background-position: -4240px 0px; }
+[id='107'] { background-position: -4280px 0px; }
+[id='108'] { background-position: -4320px 0px; }
+[id='109'] { background-position: -4360px 0px; }
+[id='110'] { background-position: -4400px 0px; }
+[id='111'] { background-position: -4440px 0px; }
+[id='112'] { background-position: -4480px 0px; }
+[id='113'] { background-position: -4520px 0px; }
+[id='114'] { background-position: -4560px 0px; }
+[id='115'] { background-position: -4600px 0px; }
+[id='116'] { background-position: -4640px 0px; }
+[id='117'] { background-position: -4680px 0px; }
+[id='118'] { background-position: -4720px 0px; }
+[id='119'] { background-position: -4760px 0px; }
+[id='120'] { background-position: -4800px 0px; }
+[id='121'] { background-position: -4840px 0px; }
+[id='122'] { background-position: -4880px 0px; }
+[id='123'] { background-position: -4920px 0px; }
+[id='124'] { background-position: -4960px 0px; }
+[id='125'] { background-position: -5000px 0px; }
+[id='126'] { background-position: -5040px 0px; }
+[id='127'] { background-position: -5080px 0px; }
+[id='128'] { background-position: -5120px 0px; }
+[id='129'] { background-position: -5160px 0px; }
+[id='130'] { background-position: -5200px 0px; }
+[id='131'] { background-position: -5240px 0px; }
+[id='132'] { background-position: -5280px 0px; }
+[id='133'] { background-position: -5320px 0px; }
+[id='134'] { background-position: -5360px 0px; }
+[id='135'] { background-position: -5400px 0px; }
+[id='136'] { background-position: -5440px 0px; }
+[id='137'] { background-position: -5480px 0px; }
+[id='138'] { background-position: -5520px 0px; }
+[id='139'] { background-position: -5560px 0px; }
+[id='140'] { background-position: -5600px 0px; }
+[id='141'] { background-position: -5640px 0px; }
+[id='142'] { background-position: -5680px 0px; }
+[id='143'] { background-position: -5720px 0px; }
+[id='144'] { background-position: -5760px 0px; }
+[id='145'] { background-position: -5800px 0px; }
+[id='146'] { background-position: -5840px 0px; }
+[id='147'] { background-position: -5880px 0px; }
+[id='148'] { background-position: -5920px 0px; }
+[id='149'] { background-position: -5960px 0px; }
+[id='150'] { background-position: -6000px 0px; }
+[id='151'] { background-position: -6040px 0px; }
+[id='152'] { background-position: -6080px 0px; }
+[id='153'] { background-position: -6120px 0px; }
+[id='154'] { background-position: -6160px 0px; }
+[id='155'] { background-position: -6200px 0px; }
+[id='156'] { background-position: -6240px 0px; }
+[id='157'] { background-position: -6280px 0px; }
+[id='158'] { background-position: -6320px 0px; }
+[id='159'] { background-position: -6360px 0px; }
+[id='160'] { background-position: -6400px 0px; }
+[id='161'] { background-position: -6440px 0px; }
+[id='162'] { background-position: -6480px 0px; }
+[id='163'] { background-position: -6520px 0px; }
