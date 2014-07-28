@@ -51,6 +51,7 @@ public class SchematicHelper {
      * @return 
      */
     public ArrayList<Schematic> getSchematics() {
+        TagHelper taghelper = new TagHelper();
         ArrayList<Schematic> schems = new ArrayList<Schematic>();
         int sid = 0;
         int uid = 0;
@@ -64,7 +65,9 @@ public class SchematicHelper {
                 uid=rs.getInt("owner_uid");
                 name=rs.getString("name");
                 size=rs.getInt("size");
-                schems.add(new Schematic(sid, uid, name, size));
+                taghelper.setSid(sid);
+                ArrayList<Tag> tags = taghelper.getTagsBySID();
+                schems.add(new Schematic(sid, uid, name, size, tags));
             }
         }catch(Exception e){
             System.out.println("error in schematichelper getschematic");
@@ -79,6 +82,7 @@ public class SchematicHelper {
      * @return 
      */
     public ArrayList<Schematic> getSchematicsByUser(){
+        TagHelper taghelper = new TagHelper();
         ArrayList<Schematic> schems = new ArrayList<Schematic>();
         int sid = 0;
         int uid = 0;
@@ -92,7 +96,9 @@ public class SchematicHelper {
                 uid=rs.getInt("owner_uid");
                 name=rs.getString("name");
                 size=rs.getInt("size");
-                schems.add(new Schematic(sid, uid, name, size));
+                taghelper.setSid(sid);
+                ArrayList tags = taghelper.getTagsBySID();
+                schems.add(new Schematic(sid, uid, name, size, tags));
             }
         }catch(Exception e){
             System.out.println("error in schematichelper getschematic");
@@ -107,10 +113,12 @@ public class SchematicHelper {
      */
     public Schematic getSchematicByID(){
         Schematic schem = new Schematic();
+        TagHelper taghelper = new TagHelper();
         int sid = 0;
         int uid = 0;
         String name ="";
         int size=0;
+        ArrayList<Tag> tags = null;
         ResultSet rs;
         try{
             rs = getSchematicByID.executeQuery();
@@ -119,8 +127,10 @@ public class SchematicHelper {
                 uid=rs.getInt("owner_uid");
                 name=rs.getString("name");
                 size=rs.getInt("size");
+                taghelper.setSid(sid);
+                tags = taghelper.getTagsBySID();
             }
-            schem = new Schematic(sid, uid, name, size);
+            schem = new Schematic(sid, uid, name, size, tags);
         }catch(Exception e){
             System.out.println("error in schematichelper getschematic");
             e.printStackTrace();
