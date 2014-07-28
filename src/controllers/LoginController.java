@@ -15,6 +15,11 @@ import dtos.*;
  *
  * @author Michael
  */
+@WebServlet(
+        {
+            "/login"
+        }
+)
 public class LoginController extends HttpServlet {
     
     /**
