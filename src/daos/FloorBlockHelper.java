@@ -84,7 +84,7 @@ public class FloorBlockHelper {
         int x=0;
         int y=0;
         ResultSet rs;
-        String json="";
+        String json="{";
         try{
             rs=getFloorBlocksByFID.executeQuery();
             while(rs.next()){
@@ -98,6 +98,10 @@ public class FloorBlockHelper {
             System.out.println("error in floor block helper");
             e.printStackTrace();
         }
+        for(int i = 0; i < floorBlocks.size()-1; i++){
+            json+=floorBlocks.get(i).getBid() + ",";
+        }
+        json=+floorBlocks.get(floorBlocks.size()-1).getBid()+"}";
         return json;
     }
     
