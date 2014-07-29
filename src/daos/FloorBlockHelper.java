@@ -77,13 +77,14 @@ public class FloorBlockHelper {
      * Retrieve all the FloorBlocks of a floor
      * @return 
      */
-    public ArrayList<FloorBlock> getFloorBlocksByFID(){
+    public String getFloorBlocksByFID(){
         ArrayList<FloorBlock> floorBlocks = new ArrayList<FloorBlock>();
         int fid=0;
         int bid=0;
         int x=0;
         int y=0;
         ResultSet rs;
+        String json="";
         try{
             rs=getFloorBlocksByFID.executeQuery();
             while(rs.next()){
@@ -97,7 +98,7 @@ public class FloorBlockHelper {
             System.out.println("error in floor block helper");
             e.printStackTrace();
         }
-        return floorBlocks;
+        return json;
     }
     
     /**
