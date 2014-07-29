@@ -35,6 +35,8 @@ public class MasterController extends HttpServlet {
         ServletContext ctx;
         try{
             ctx=this.getServletContext();
+            //get all attributes from jsp
+            //if statements on path
         }catch(Exception e){
             System.out.println("master controller get");
             e.printStackTrace();
@@ -53,6 +55,8 @@ public class MasterController extends HttpServlet {
         ServletContext ctx;
         try{
             ctx=this.getServletContext();
+            //get all attributes from jsp
+            //if statements on path
         }catch(Exception e){
             System.out.println("master controller post");
             e.printStackTrace();

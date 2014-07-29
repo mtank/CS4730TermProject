@@ -67,7 +67,7 @@ public class LoginController extends HttpServlet {
         }catch(Exception e){
             System.out.println("login controller doPost");
             e.printStackTrace();
-            response.sendRedirect(null);//where to send if login error
+            response.sendRedirect(null);//where to send if login error possibly login page again
         }
     }
 }
