@@ -7,10 +7,10 @@
     <title>Minecraft Schematics</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="navbar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
 
   <body>
-
     <div class="container">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -31,6 +31,45 @@
         </div><!--/.container-fluid -->
       </div>
     </div> <!-- /container -->
+
+    <div class="container">
+
+      <h1>${user.name}</h1>
+      <p>${user.email}</p>
+
+      <br><br><br>
+      <div class="result-container">
+        <c:forEach var="result" items="">
+          <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+          </div>
+        </c:forEach>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+        </div>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+        </div>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+        </div>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+        </div>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.tags}</p>
+        </div>
+      </div>
+
+
+
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

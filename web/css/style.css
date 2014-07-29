@@ -5,11 +5,30 @@
 	overflow: auto;
 }
 
-#button {
+.button {
 	height: 30px;
 	width: 300px;
 	background: gray;
 	margin-top: 20px;
+}
+
+#new-floor {
+	
+}
+
+#save {
+
+}
+
+.button p {
+	text-transform: uppercase;
+	font-size: 20px;
+	color: white;
+	line-height: 30px;
+}
+
+.button:hover {
+	opacity: .7;
 }
 
 #cnv {
@@ -33,6 +52,18 @@
 	border-width: 1px;
 	background-image: url('../img/Sprite_Sheet.png');
 }
+
+.result {
+	float: left;
+	margin-right: 80px;
+}
+
+.result-container {
+	width: 800px;
+	background-color: #EEEEEE;
+	margin: 20px auto;
+}
+
 
 #start {
 	color: gray;

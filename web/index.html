@@ -7,6 +7,7 @@
     <title>Minecraft Schematics</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="navbar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
 
   <body>
@@ -27,6 +28,36 @@
         </div><!--/.container-fluid -->
       </div>
     </div> <!-- /container -->
+
+    <div class="container">
+      <h1>SEARCH</h1>
+
+      <form>
+        <h2>Name: </h2>
+        <input type="text" name="search"></input>
+        <button class="btn">SEARCH</button>
+      </form>
+
+      <div class="result-container">
+        <c:forEach var="result" items="">
+          <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.uid}</p>
+            <p>${schematic.tags}</p>
+          </div>
+        </c:forEach>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.uid}</p>
+            <p>${schematic.tags}</p>
+        </div>
+        <div class="result">
+            <h1>${schematic.name}</h1>
+            <p>${schematic.uid}</p>
+            <p>${schematic.tags}</p>
+        </div>
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

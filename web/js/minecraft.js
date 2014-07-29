@@ -2,7 +2,9 @@ $(document).ready(function() {
 
   var canvas     =   document.getElementById('cnv'),
       context    =   canvas.getContext('2d'),
-      box_size   =   40;
+      box_size   =   40,
+      width      =   23,
+      height     =   15;
       
   var current_position,
       current_id;
@@ -12,6 +14,14 @@ $(document).ready(function() {
 
   var canvas_width   =   canvas.width,
       canvas_height  =   canvas.height;
+
+  var grid = [];
+
+  for (i = 0; i < width * height; i++) {
+
+      grid[i] = null;
+
+  } // for
 
   $('.tool').mousedown(function (e) {
     
@@ -25,8 +35,13 @@ $(document).ready(function() {
     e.preventDefault();
     position = getPosition(e);
 
-    var cx = (Math.floor(position.x / box_size) * box_size),
-        cy = (Math.floor(position.y / box_size) * box_size);
+    var dx = (Math.floor(position.x / box_size)),
+        dy = (Math.floor(position.y / box_size));
+
+    //alert('dx: ' + dx + ' dy: ' + dy);
+
+    var cx = dx * box_size,
+        cy = dy * box_size;
 
     if (position.x + box_size > canvas_width) {
       cx = canvas_width - box_size;
@@ -39,10 +54,16 @@ $(document).ready(function() {
     sprite.src = "img/Sprite_Sheet.png";
 
     if (e.ctrlKey || e.metaKey) {
-      drawPixel(cx, cy, null, true);
+      grid[width * dy + dx] = null;
+      drawPixel(cx, cy, null, true);      
     } else {
+      grid[width * dy + dx] = current_id;
       context.drawImage(sprite, current_position, 0, box_size, box_size, cx, cy, box_size, box_size);
     } // if
+
+    //alert(width*dy+dx);
+
+    //alert('grid[' + (width * dy + dx) + ']: ' + grid[width * dy + dx]);
 
   });
 
