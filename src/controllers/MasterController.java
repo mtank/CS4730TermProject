@@ -36,7 +36,20 @@ public class MasterController extends HttpServlet {
         try{
             ctx=this.getServletContext();
             //get all attributes from jsp
-            //if statements on path
+            String userPath = request.getServletPath();
+            if(userPath.equals("/create")){
+                
+            }else if(userPath.equals("/index")){
+                
+            }else if(userPath.equals("/profile")){
+                
+            }else if(userPath.equals("/schematic")){
+                
+            }else if(userPath.equals("/view")){
+                
+            }else{
+                
+            }
         }catch(Exception e){
             System.out.println("master controller get");
             e.printStackTrace();
@@ -56,7 +69,20 @@ public class MasterController extends HttpServlet {
         try{
             ctx=this.getServletContext();
             //get all attributes from jsp
-            //if statements on path
+            String userPath = request.getServletPath();
+            if(userPath.equals("/create")){
+                
+            }else if(userPath.equals("/index")){
+                
+            }else if(userPath.equals("/profile")){
+                
+            }else if(userPath.equals("/schematic")){
+                
+            }else if(userPath.equals("/view")){
+                
+            }else{
+                
+            }
         }catch(Exception e){
             System.out.println("master controller post");
             e.printStackTrace();
