@@ -17,7 +17,7 @@ public class SchematicHelper {
     protected PreparedStatement updateSchematic;
     
     public SchematicHelper(){
-        this("jdbc:mysql://localhost/term_project", "", "");
+        this("jdbc:mysql://localhost/term_project", "root", "");
     }
     
     /**

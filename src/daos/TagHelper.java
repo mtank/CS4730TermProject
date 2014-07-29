@@ -16,7 +16,7 @@ public class TagHelper {
     protected PreparedStatement addTag;
     
     public TagHelper(){
-        this("jdbc:mysql://localhost/term_project", "", "");        
+        this("jdbc:mysql://localhost/term_project", "root", "");        
     }
     
     /**

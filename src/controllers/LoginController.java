@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
             UserHelper userhelper = new UserHelper();
             User user = userhelper.validateUser(username, hash_pass);
             if(user!=null){
-                request.getSession().setAttribute("id", user.getUid());
+                request.getSession().setAttribute("user", user);
                 dispatcher = ctx.getRequestDispatcher(null);//location of where to go next
             }else{
                 dispatcher = ctx.getRequestDispatcher(null);//needs to be login page

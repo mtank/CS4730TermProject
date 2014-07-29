@@ -14,7 +14,7 @@ public class BlockHelper {
     protected PreparedStatement getBlockByID;
     
     public BlockHelper(){
-        this("jdbc:mysql://localhost/term_project", "", "");
+        this("jdbc:mysql://localhost/term_project", "root", "");
     }
     
     /**

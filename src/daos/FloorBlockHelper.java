@@ -17,7 +17,7 @@ public class FloorBlockHelper {
     protected PreparedStatement updateFloorBlock;
     
     public FloorBlockHelper(){
-        this("jdbc:mysql://localhost/term_project", "", "");        
+        this("jdbc:mysql://localhost/term_project", "root", "");        
     }
     
     /**

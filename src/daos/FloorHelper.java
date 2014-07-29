@@ -17,7 +17,7 @@ public class FloorHelper {
     protected PreparedStatement updateFloor;
     
     public FloorHelper(){
-        this("jdbc:mysql://localhost/term_project", "", "");
+        this("jdbc:mysql://localhost/term_project", "root", "");
     }
     
     /**

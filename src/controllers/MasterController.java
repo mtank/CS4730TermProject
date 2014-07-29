@@ -36,6 +36,10 @@ public class MasterController extends HttpServlet {
         try{
             ctx=this.getServletContext();
             //get all attributes from jsp
+            String c_name = request.getParameter("name");
+            String c_tags = request.getParameter("tags");
+            String s_search = request.getParameter("search");
+            
             String userPath = request.getServletPath();
             if(userPath.equals("/create")){
                 
